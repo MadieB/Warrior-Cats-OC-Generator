@@ -1,5 +1,10 @@
 
 
+
+import javax.swing.ImageIcon;
+
+
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,7 +13,7 @@
 
 /**
  *
- * @author 800141
+ * @author Madison Barnes
  */
 public class WarriorCat extends javax.swing.JFrame {
         // arraylists
@@ -19,7 +24,8 @@ public class WarriorCat extends javax.swing.JFrame {
         String[] personality;
         String[] history;
         String[] clan;
-     
+        ImageIcon[] cats;
+        ImageIcon[] clans;
         
         // variables used for random number generators
         int f;
@@ -32,6 +38,7 @@ public class WarriorCat extends javax.swing.JFrame {
         // output variable
         String o;
         String gender;
+        String role;
     /**
      * Creates new form WarriorCat
      */
@@ -42,9 +49,10 @@ public class WarriorCat extends javax.swing.JFrame {
         peltC = new String[10];
         eyeC = new String[3];
         personality = new String[8];
-        history = new String[5];
+        history = new String[6];
         clan = new String[5];
-        
+        clans = new ImageIcon[4];
+        cats = new ImageIcon[30];
         initComponents();
     }
 
@@ -63,8 +71,9 @@ public class WarriorCat extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         outputBox = new javax.swing.JTextArea();
+        catPic = new javax.swing.JLabel();
+        clanPic = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 0, 0));
@@ -87,53 +96,62 @@ public class WarriorCat extends javax.swing.JFrame {
         });
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/d95yas0-52914c3f-8087-4ce3-b595-9cf353ec4171.png"))); // NOI18N
 
         outputBox.setBackground(new java.awt.Color(255, 204, 153));
         outputBox.setColumns(20);
         outputBox.setRows(5);
         jScrollPane1.setViewportView(outputBox);
 
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/d95yas0-52914c3f-8087-4ce3-b595-9cf353ec4171.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(182, 182, 182)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(65, 65, 65)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(catPic, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(inputBox, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(182, 182, 182)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 736, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel1)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(89, 89, 89))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(inputBox, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(271, 271, 271)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(clanPic, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(generate))))
+                        .addContainerGap(35, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(generate)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 93, Short.MAX_VALUE))
+                        .addComponent(jLabel3)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(catPic, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(clanPic, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(inputBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(generate))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addGap(143, 143, 143))
         );
 
         pack();
@@ -174,8 +192,8 @@ public class WarriorCat extends javax.swing.JFrame {
         eName[14] = "flower";
     }
     private void  initpeltC(){
-        peltC[0] = "black";
-        peltC[1] = "white";
+        peltC[0] = "white";
+        peltC[1] = "black";
         peltC[2] = "brown";
         peltC[3] = "grey";
         peltC[4] = "orange";
@@ -186,8 +204,8 @@ public class WarriorCat extends javax.swing.JFrame {
         peltC[9] = "grey and black";
     }
     private void initeyeC(){
-        eyeC[0] = "yellow";
-        eyeC[1] = "blue";
+        eyeC[0] = "blue";
+        eyeC[1] = "green";
         eyeC[2] = "blind";
     }
     private void initpersonality(){
@@ -210,16 +228,20 @@ public class WarriorCat extends javax.swing.JFrame {
                 "\n you were attacked by a badger. You survived the attack, however you were"+
                 "\n gravely injured. Your injury destroyed any chance you had at becoming a" +
                 "\n warrior";
-        history[2] = "You are the medicine cat. You play a major role in your clan, healing" +
-                "\n those who are injured on the battlefield, or ill. Your knowledge of herbs " +
-                "\n is respected by all of your fellow cats";
-        history[3] = "You've fought ofr every scrap you could get your paws on. Life has thrown every" +
+        history[2] = "You looked up to your clan. Everything was going well in your life unttil"+
+                "\n you found out your sibling was part of a large prophecy. They became the star" +
+                "\n of your clan while you were left in the shadows. ";
+        history[3] = "You've fought for every scrap you could get your paws on. Life has thrown every" +
                 "\n challenge your way, and you've defeated each one. You know nothing in life is free." +
                 "\n You fight for your right to live and don't let anyone say otherwise";
         history[4] = "You were born during the great journey, and made a long track to the new territories." +
-                "\n During the trip, you ran into a lot of bad things. Your luck doesn't seem to favor you" +
-                "\n, however you made it threw it. You learned a lot on the way and became close to the tribe" +
+                "\n During the trip, you ran into a lot of bad things. Your luck doesn't seem to favor you," +
+                "\n however you made it threw it. You learned a lot on the way and became close to the tribe" +
                 "\n of Rushing Water";
+        history[5] = "You are the offspring of a forbidden love. For the longest time, you never were told" +
+                "\n the truth. One day, you found out the truth from a corrupt clan member. Afterwards your clan" +
+                "\n looked down on you for being a half breed. Despite all loyalty you've shown, the only" +
+                "\n aspect of your live your clan sees is your not pureblood";
     }
     private void initclan(){
         clan[0] = "Riverclan";
@@ -228,7 +250,45 @@ public class WarriorCat extends javax.swing.JFrame {
         clan[3] = "Windclan";
         clan[4] = "outsider";
     }
-    
+     private void initclans(){
+        clans[0] = new ImageIcon(getClass().getResource("/image/RiverClan.png")); 
+        clans[1] = new ImageIcon(getClass().getResource("/image/ThunderClan.png"));
+        clans[2] = new ImageIcon(getClass().getResource("/image/ShadowClan.png"));
+        clans[3] = new ImageIcon(getClass().getResource("/image/WindClan.png")); 
+    }
+     
+    private void initcats(){
+        cats[0] = new ImageIcon(getClass().getResource("/image/KittyA.png"));
+        cats[1] = new ImageIcon(getClass().getResource("/image/KittyB.png"));
+        cats[2] = new ImageIcon(getClass().getResource("/image/KittyC.png"));
+        cats[3] = new ImageIcon(getClass().getResource("/image/KittyD.png"));
+        cats[4] = new ImageIcon(getClass().getResource("/image/KittyE.png"));
+        cats[5] = new ImageIcon(getClass().getResource("/image/KittyF.png"));
+        cats[6] = new ImageIcon(getClass().getResource("/image/KittyG.png"));
+        cats[7] = new ImageIcon(getClass().getResource("/image/KittyH.png"));
+        cats[8] = new ImageIcon(getClass().getResource("/image/KittyI.png"));
+        cats[9] = new ImageIcon(getClass().getResource("/image/KittyJ.png"));
+        cats[10] = new ImageIcon(getClass().getResource("/image/KittyK.png"));
+        cats[11] = new ImageIcon(getClass().getResource("/image/KittyL.png"));
+        cats[12] = new ImageIcon(getClass().getResource("/image/KittyM.png"));
+        cats[13] = new ImageIcon(getClass().getResource("/image/KittyN.png"));
+        cats[14] = new ImageIcon(getClass().getResource("/image/KittyO.png"));
+        cats[15] = new ImageIcon(getClass().getResource("/image/KittyP.png"));
+        cats[16] = new ImageIcon(getClass().getResource("/image/KittyQ.png"));
+        cats[17] = new ImageIcon(getClass().getResource("/image/KittyR.png"));
+        cats[18] = new ImageIcon(getClass().getResource("/image/KittyS.png"));
+        cats[19] = new ImageIcon(getClass().getResource("/image/KittyT.png"));
+        cats[20] = new ImageIcon(getClass().getResource("/image/KittyU.png"));
+        cats[21] = new ImageIcon(getClass().getResource("/image/KittyV.png"));
+        cats[22] = new ImageIcon(getClass().getResource("/image/KittyW.png"));
+        cats[23] = new ImageIcon(getClass().getResource("/image/KittyX.png"));
+        cats[24] = new ImageIcon(getClass().getResource("/image/KittyY.png"));
+        cats[25] = new ImageIcon(getClass().getResource("/image/KittyZ.png"));
+        cats[26] = new ImageIcon(getClass().getResource("/image/KittyAB.png"));
+        cats[27] = new ImageIcon(getClass().getResource("/image/KittyCD.png"));
+        cats[28] = new ImageIcon(getClass().getResource("/image/KittyEF.png"));
+        cats[29] = new ImageIcon(getClass().getResource("/image/KittyGH.png"));
+}
     
     private void generateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_generateActionPerformed
         // TODO add your handling code here:
@@ -240,6 +300,8 @@ public class WarriorCat extends javax.swing.JFrame {
         initpersonality();
         inithistory();
         initclan();
+        initclans(); 
+        initcats();
         // get info from user
         gender = inputBox.getText();
         
@@ -249,15 +311,162 @@ public class WarriorCat extends javax.swing.JFrame {
         pc = (int) (Math.random()* 10);
         ec = (int) (Math.random()* 3);
         p = (int) (Math.random()* 8);
-        h = (int) (Math.random()* 5);
+        h = (int) (Math.random()* 6);
         c = (int) (Math.random()* 5);
+        int r = (int) (Math.random()* 3);
+        int mn1 = (int) (Math.random()* 15);
+        int mn2 = (int) (Math.random()* 15);
+        int fn1 = (int) (Math.random()* 15);
+        int fn2 = (int) (Math.random()* 15);
+        int sn1 = (int) (Math.random()* 15);
+        int sn2 = (int) (Math.random()* 15);
         
-        // output
+        // images - Clan symbols
+        if (c == 0){
+            clanPic.setIcon(clans[0]);
+        }
+        if (c== 1){
+            clanPic.setIcon(clans[1]);
+        }
+        if (c== 2){
+            clanPic.setIcon(clans[2]);
+        }
+        if (c== 3){
+            clanPic.setIcon(clans[3]);
+        }
+        if (c == 4){
+            clanPic.setIcon(null);
+        }
+        
+        // images - cats
+        if (pc == 0 && ec == 0){
+            catPic.setIcon(cats[0]);
+        }
+        if (pc == 0 && ec == 1){
+            catPic.setIcon(cats[1]);
+        }
+        if (pc == 0 && ec == 2){
+            catPic.setIcon(cats[2]);
+        }
+        if (pc == 1 && ec == 0){
+            catPic.setIcon(cats[3]);
+        }       
+        if (pc == 1 && ec == 1){
+            catPic.setIcon(cats[4]);
+        }
+        if (pc == 1 && ec == 2){
+            catPic.setIcon(cats[5]);
+        }
+        if (pc == 2 && ec == 0){
+            catPic.setIcon(cats[6]);
+        }
+        if (pc == 2 && ec == 1){
+            catPic.setIcon(cats[7]);
+        }
+        if (pc == 2 && ec == 2){
+            catPic.setIcon(cats[8]);
+        }
+        if (pc == 3 && ec == 0){
+            catPic.setIcon(cats[9]);
+        }
+        if (pc == 3 && ec == 1){
+            catPic.setIcon(cats[10]);
+        }
+        if (pc == 3 && ec == 2){
+            catPic.setIcon(cats[11]);
+        }
+        if (pc == 4 && ec == 0){
+            catPic.setIcon(cats[12]);
+        }
+        if (pc == 4 && ec == 1){
+            catPic.setIcon(cats[13]);
+        }
+        if (pc == 4 && ec == 2){
+            catPic.setIcon(cats[14]);
+        }       
+        if (pc == 5 && ec == 0){
+            catPic.setIcon(cats[15]);
+        }
+        if (pc == 5 && ec == 1){
+            catPic.setIcon(cats[16]);
+        }
+        if (pc == 5 && ec == 2){
+            catPic.setIcon(cats[17]);
+        }
+        if (pc == 6 && ec == 0){
+            catPic.setIcon(cats[18]);
+        }
+        if (pc == 6 && ec == 1){
+            catPic.setIcon(cats[19]);
+        }
+        if (pc == 6 && ec == 2){
+            catPic.setIcon(cats[20]);
+        }
+        if (pc == 7 && ec == 0){
+            catPic.setIcon(cats[21]);
+        }
+        if (pc == 7 && ec == 1){
+            catPic.setIcon(cats[22]);
+        }
+        if (pc == 7 && ec == 2){
+            catPic.setIcon(cats[23]);
+        }
+        if (pc == 8 && ec == 0){
+            catPic.setIcon(cats[24]);
+        }       
+        if (pc == 8 && ec == 1){
+            catPic.setIcon(cats[25]);
+        }
+        if (pc == 8 && ec == 2){
+            catPic.setIcon(cats[26]);
+        }
+        if (pc == 9 && ec == 0){
+            catPic.setIcon(cats[27]);
+        }
+        if (pc == 9 && ec == 1){
+            catPic.setIcon(cats[28]);
+        }
+        if (pc == 9 && ec == 2){
+            catPic.setIcon(cats[29]);
+        }
+        //role
+        if (e == 0){
+            role = "kit";
+        }
+        if (e == 1){
+            role = "Apprentice";
+        }
+        if (e == 2){
+            role = "Leader";
+        }
+        if (h == 2){
+            role = "Medicine Cat";
+        }
+        if (c == 4){
+            role = "None";
+        }
+        else{
+            if (r == 0){
+                role = "Deputy";
+            }
+            if (r == 1){
+                role = "Warrior";
+            }
+            if (r == 2){
+                role = "Elder";
+            }
+        }
+        
+        //output 
         o = " Name:" + " " + fName[f] + eName[e] +
             "\n Gender:" + " " + gender +
             "\n Clan:" + " " + clan[c] +
+            "\n Role:" + " " +  role +
             "\n Personality:" + " " + personality[p] +
-            "\n Appearence:" + " "+ peltC[pc] + " " + "with" + " "+ eyeC[ec] + " " + "eyes" +
+            "\n Appearence: You are a" + " "+ peltC[pc] + " cat " + "with" + " "+ eyeC[ec] + " " + "eyes" +
+            "\n Mother:" + " " + fName[mn1] + eName[mn2] +
+            "\n Father:" + " " + fName[fn1] + eName[fn2] +
+            "\n Sibling:" + " " + fName[sn1] + eName[sn2] +
             "\n Backstory:" + " " + history[h];
         
         outputBox.setText(o);
@@ -301,12 +510,13 @@ public class WarriorCat extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel catPic;
+    private javax.swing.JLabel clanPic;
     private javax.swing.JButton generate;
     private javax.swing.JTextField inputBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea outputBox;
     // End of variables declaration//GEN-END:variables
